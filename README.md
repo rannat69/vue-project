@@ -22,8 +22,32 @@ npm install
 npm run dev
 ```
 
-### Compile and Minify for Production
 
-```sh
-npm run build
+### Configure 
+
+Set-up a php server to access to the read_db.php file and life_expectancy.db file.
+
+Both are included in the php directory.
+
+Make sure your PHP server allows access to external requests. 
+
+In the case of an Apache server, add this line to httpd.conf 
+
 ```
+Header set Access-Control-Allow-Origin <your Vue website>
+
+```
+
+Go to src/config.json and enter the address of the PHP API 
+
+Eample : 
+
+```
+{
+  "apiPHPUrl": "http://127.0.0.1:3000/techtestsql/",
+  "apiPHPLifeExpectancy": "read_db.php"
+}
+```
+
+
+
