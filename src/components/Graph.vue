@@ -38,20 +38,15 @@ use([
 
 provide(THEME_KEY, "dark");
 
-const itemsFr = ref([]);
-const itemsUs = ref([]);
-const itemsGb = ref([]);
-
 const itemsX = ref([]);
 const items = ref([]);
 
+// Get url to php API from config.json
 const url = config.apiPHPUrl + config.apiPHPLifeExpectancy;
-console.log("url", url);
+
 fetch(url)
   .then((response) => response.json())
   .then((data) => {
-    console.log("data", data[1]);
-
     for (let i = 0; i < data.length; i++) {
       let item = {
         value: data[i]["2020"],
@@ -68,6 +63,7 @@ fetch(url)
 
 const filterValue = ref(0);
 
+// Filter items based on filterValue
 const filteredItems = computed(() => {
   return items.value.filter((item) => item.value > filterValue.value);
 });
@@ -89,11 +85,6 @@ const option = ref({
   tooltip: {
     trigger: "item",
     formatter: "{a} <br/>{b} : {c} ({d}%)",
-  },
-  legend: {
-    orient: "vertical",
-    left: "left",
-    data: ["Direct", "Email", "Ad Networks", "Video Ads", "Search Engines"],
   },
   xAxis: {
     type: "category",
