@@ -40,7 +40,7 @@ Header set Access-Control-Allow-Origin <your Vue website>
 
 Go to src/config.json and enter the address of the PHP API 
 
-Eample : 
+Example : 
 
 ```
 {
